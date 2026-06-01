@@ -19,6 +19,9 @@ $pdo = new PDO(
     "7013916"
 );
 
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+
+
 $stmt = $pdo->prepare("
 SELECT *
 FROM admins

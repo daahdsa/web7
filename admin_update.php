@@ -2,6 +2,10 @@
 error_reporting(0);
 ini_set('display_errors', 0);
 
+if (!isset($_POST['csrf']) || $_POST['csrf'] !== $_SESSION['csrf']) {
+    exit('CSRF blocked');
+}
+
 header('Content-Type: text/html; charset=UTF-8');
 
 if (

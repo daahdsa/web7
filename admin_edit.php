@@ -6,6 +6,13 @@ function e($str) {
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
 
+error_reporting(0);
+ini_set('display_errors', 0);
+
+if (empty($_SESSION['csrf'])) {
+    $_SESSION['csrf'] = bin2hex(random_bytes(32));
+}
+
 if (
     !isset($_SERVER['PHP_AUTH_USER']) ||
     !isset($_SERVER['PHP_AUTH_PW'])
@@ -85,6 +92,8 @@ $userLanguages = $stmt->fetchAll(PDO::FETCH_COLUMN);
 <form action="admin_update.php" method="POST">
 
 <input type="hidden" name="id" value="<?= $user['id'] ?>">
+
+<input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
 
 <p>
 ФИО<br>

@@ -13,6 +13,26 @@ if (empty($_SESSION['csrf'])) {
     $_SESSION['csrf'] = bin2hex(random_bytes(32));
 }
 
+
+if (!empty($_FILES['file'])) {
+
+    $allowed = ['image/jpeg', 'image/png'];
+
+    if (!in_array($_FILES['file']['type'], $allowed)) {
+        exit('Invalid file type');
+    }
+
+    if ($_FILES['file']['size'] > 2 * 1024 * 1024) {
+        exit('File too large');
+    }
+
+    $name = bin2hex(random_bytes(8));
+    move_uploaded_file($_FILES['file']['tmp_name'], "uploads/$name");
+}
+
+
+
+
 if (
     !isset($_SERVER['PHP_AUTH_USER']) ||
     !isset($_SERVER['PHP_AUTH_PW'])

@@ -46,8 +46,10 @@ if (
 
 $id = (int)($_GET['id'] ?? 0);
 
-if (!filter_var($id, FILTER_VALIDATE)) {
-    exit('Bad request');
+if (!filter_var($id, FILTER_VALIDATE_INT)) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Bad Request']);
+    exit;
 }
 
 $stmt = $pdo->prepare("

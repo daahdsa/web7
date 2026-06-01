@@ -147,13 +147,13 @@ ORDER BY total DESC
 
             <td><?= e($user['full_name']) ?> </td>
 
-            <td><?= htmlspecialchars($user['phone']) ?></td>
+            <td><?= e($user['phone']) ?></td>
 
-            <td><?= htmlspecialchars($user['email']) ?></td>
+            <td><?= e($user['email']) ?></td>
 
-            <td><?= htmlspecialchars($user['birth_date']) ?></td>
+            <td><?= e($user['birth_date']) ?></td>
 
-            <td><?= htmlspecialchars($user['gender']) ?></td>
+            <td><?= e($user['gender']) ?></td>
 
             <td>
 

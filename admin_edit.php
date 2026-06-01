@@ -2,6 +2,10 @@
 
 header('Content-Type: text/html; charset=UTF-8');
 
+function e($str) {
+    return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
+
 if (
     !isset($_SERVER['PHP_AUTH_USER']) ||
     !isset($_SERVER['PHP_AUTH_PW'])
@@ -85,25 +89,25 @@ $userLanguages = $stmt->fetchAll(PDO::FETCH_COLUMN);
 <p>
 ФИО<br>
 <input type="text" name="full_name"
-value="<?= htmlspecialchars($user['full_name']) ?>">
+value="<?= e($user['full_name']) ?>">
 </p>
 
 <p>
 Телефон<br>
 <input type="text" name="phone"
-value="<?= htmlspecialchars($user['phone']) ?>">
+value="<?= e($user['phone']) ?>">
 </p>
 
 <p>
 Email<br>
 <input type="email" name="email"
-value="<?= htmlspecialchars($user['email']) ?>">
+value="<?= e($user['email']) ?>">
 </p>
 
 <p>
 Дата рождения<br>
 <input type="date" name="birth_date"
-value="<?= htmlspecialchars($user['birth_date']) ?>">
+value="<?= e($user['birth_date']) ?>">
 </p>
 
 <p>

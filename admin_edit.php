@@ -94,7 +94,7 @@ $userLanguages = $stmt->fetchAll(PDO::FETCH_COLUMN);
 <input type="hidden" name="id" value="<?= $user['id'] ?>">
 
 <input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
-<p><?= $_SESSION['csrf'] ?></p>
+
 
 <p>
 ФИО<br>

@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+error_reporting(0);
+ini_set('display_errors', 0);
+
 if (empty($_SESSION['id'])) {
     die('Нет доступа');
 }

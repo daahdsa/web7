@@ -46,6 +46,10 @@ if (
 
 $id = (int)($_GET['id'] ?? 0);
 
+if (!filter_var($id, FILTER_VALIDATE)) {
+    exit('Bad request');
+}
+
 $stmt = $pdo->prepare("
 DELETE FROM application_languages
 WHERE application_id = ?
